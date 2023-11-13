@@ -1,34 +1,43 @@
 import { Route, Routes } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import React from 'react'
 
 // import component pages
-import DigitalGallery from './components/DigitalGallery';
-import WatercolorGallery from './components/WatercolorGallery';
-import OilGallery from './components/OilGallery';
-import MixGallery from './components/MixGallery';
-import NotFound from './components/NotFound';
-import SingUp from './components/SingUp';
-import LogIn from './components/LogIn';
+import SharedLayout from './components/SharedLayout/SharedLayout'
+import DigitalGallery from './components/DigitalGallery/DigitalGallery';
+import WatercolorGallery from './components/WatercolorGallery/WatercolorGallery';
+import OilGallery from './components/OilGallery/OilGallery';
+import MixGallery from './components/MixGallery/MixGallery';
+import NotFound from './components/NotFound/NotFound';
+import SingUp from './components/SingUp/SingUp';
+import LogIn from './components/LogIn/LogIn';
+import ModalArt from 'components/ModalArt/ModalArt';
+import Home from 'pages/Home/Home';
 
 // path consts
 const REGISTER = '/register';
 const LOGIN = '/login';
-const DIGITAL = '/digital';
-const MIX = '/mix';
 const OIL = '/oil';
 const WATERCOLOR = '/watercolor';
+const DIGITAL = '/digital';
+const MIX = '/mix';
+const MODAL = '/modal';
 const NOTFOUND = '/*';
 
 const App = () => {
 
 // Routes
 const appRoutes = [
-  {path: REGISTER, element: <SingUp />,},
-  {path: LOGIN, element: <LogIn />,},
-  {path: MIX, element: <MixGallery />,},
+  
   {path: OIL, element: <OilGallery />,},
   {path: WATERCOLOR, element: <WatercolorGallery />,},
-  {path: DIGITAL, element: <DigitalGallery />,},
+  {path: DIGITAL, element: <DigitalGallery />,},  
+  {path: MIX, element: <MixGallery />,},
+
+  {path: MODAL, element: <ModalArt />,},
+
+  {path: REGISTER, element: <SingUp />,},
+  {path: LOGIN, element: <LogIn />,},
   {path: NOTFOUND, element: <NotFound />,}
 ];
 

@@ -1,0 +1,54 @@
+@import './nullStyles.scss';
+
+%linktemp{
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+
+    position: fixed;
+    left: 0;
+    
+    width: 100vw;
+    height: 40px;
+   
+    
+    padding: 10px 0;
+
+    border-bottom: solid 2px gray;
+
+
+    .pageNav {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        
+        width: 95%;
+        height: 100%;
+
+        margin: 0 auto;
+
+        background-image:url(../../images/body-background/pawel-czerwinski-oykbZuvajO0-unsplash.jpg);
+        
+        border-radius: 6px;
+
+        .list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+    }
+}
+
+.section {
+
+    width: 95%;
+    margin: 0 auto;
+
+    
+}

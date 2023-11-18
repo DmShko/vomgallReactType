@@ -1,9 +1,17 @@
-import React from 'react'
+import { createSlice } from '@reduxjs/toolkit'
 
-const singUpSlice = () => {
-  return (
-    <div>singUpSlice</div>
-  )
+const singUpSliceInitialState = {
+  items: [],
+
+};
+
+
+const singUpSlice = createSlice({
+  name: 'singUp',
+  initialState: singUpSliceInitialState,
+  reducers: {
+  }
 }
+);
 
-export default singUpSlice
+export default singUpSlice.reducer;

@@ -4,10 +4,7 @@ import React from 'react'
 
 // import component pages
 import SharedLayout from './components/SharedLayout/SharedLayout'
-import DigitalGallery from './components/DigitalGallery/DigitalGallery';
-import WatercolorGallery from './components/WatercolorGallery/WatercolorGallery';
-import OilGallery from './components/OilGallery/OilGallery';
-import MixGallery from './components/MixGallery/MixGallery';
+import Gallery from './components/Gallery/Gallery';
 import NotFound from './components/NotFound/NotFound';
 import SingUp from './components/SingUp/SingUp';
 import LogIn from './components/LogIn/LogIn';
@@ -29,10 +26,10 @@ const App = () => {
 // Routes
 const appRoutes = [
   
-  {path: OIL, element: <OilGallery />,},
-  {path: WATERCOLOR, element: <WatercolorGallery />,},
-  {path: DIGITAL, element: <DigitalGallery />,},  
-  {path: MIX, element: <MixGallery />,},
+  {path: OIL, element: <Gallery />,},
+  {path: WATERCOLOR, element: <Gallery />,},
+  {path: DIGITAL, element: <Gallery />,},  
+  {path: MIX, element: <Gallery />,},
 
   {path: MODAL, element: <ModalArt />,},
 

@@ -1,9 +1,17 @@
-import React from 'react'
+import { createSlice } from '@reduxjs/toolkit'
 
-const GallerySlice = () => {
-  return (
-    <div>GallerySlice</div>
-  )
+const gallerySliceInitialState = {
+  items: [],
+
+};
+
+const gallerySlice = createSlice({
+  name: 'gallery',
+  initialState: gallerySliceInitialState,
+  reducers: {
+  }
+
 }
+);
 
-export default GallerySlice
+export default gallerySlice.reducer;

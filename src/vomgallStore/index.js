@@ -17,6 +17,7 @@ const rootReducer = combineReducers(
         logIn: logInReducer,
         singUp: singUpReducer,
         gallery: gallerySlice,
+         //...or more redusers
     }
 );
 

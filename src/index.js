@@ -2,14 +2,20 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App  from './App.jsx';
-import { store } from './vomgallStore/index'
+import { store, persistor } from './vomgallStore/index'
 import './index.css';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 
     <Provider store={store}>
-      <App />
+      <BrowserRouter basename="/vomgallReactType">
+        <PersistGate loading={null} persistor={persistor}>
+           <App />
+        </PersistGate>
+      </BrowserRouter>
     </Provider>
 
   </React.StrictMode>

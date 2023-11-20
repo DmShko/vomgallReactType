@@ -79,32 +79,32 @@ const SharedLayout = () => {
                     <ul className={sh.list}>
                         <li className={`${sh.navOneItem} ${sh.link}`}>
                             
-                            <NavLink className={sh.linkNav} to="/oil">
-                            Oil
+                            <NavLink className={sh.linkNav} to="/lirics">
+                            Lirics
                             </NavLink>
                            
                         </li>
 
                         <li className={`${sh.navOneItem} ${sh.link}`}>
 
-                            <NavLink className={sh.linkNav} to="/watercolor">
-                            Watercolor
+                            <NavLink className={sh.linkNav} to="/music">
+                            Music
                             </NavLink>
                            
                         </li>
 
                         <li className={`${sh.navOneItem} ${sh.link}`}>
 
-                            <NavLink className={sh.linkNav} to="/digital">
-                            Digital
+                            <NavLink className={sh.linkNav} to="/drawing">
+                            Drawing
                             </NavLink>
                            
                         </li>
 
                         <li className={`${sh.navOneItem} ${sh.link}`}>
 
-                            <NavLink className={sh.linkNav} to="/mix">
-                            Mix
+                            <NavLink className={sh.linkNav} to="/community">
+                            Community
                             </NavLink>
                            
                         </li>
@@ -170,7 +170,7 @@ const SharedLayout = () => {
                                 maxLength: {value:16, message: 'Invalid length!'},  value:name, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Name!'}})} 
                                 className={sh.in} 
                                 type="text"
-                              
+                                autoComplete='false'
                                 onChange={inputChange}
                                 title="Name"
                                 placeholder="Enter name..."></input>
@@ -182,7 +182,7 @@ const SharedLayout = () => {
                                 maxLength: {value:16, message: 'Invalid length!'},  value:email, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Email!'}})} 
                                 className={sh.in} 
                                 type="text"
-                            
+                                autoComplete='false'
                                 onChange={inputChange}
                                 title="Email"
                                 placeholder="Enter email..."></input>
@@ -194,7 +194,7 @@ const SharedLayout = () => {
             
                                 maxLength: {value:16, message: 'Invalid length!'},  value:password, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Password!'}})} 
                                 type="password"
-                                
+                                autoComplete='false'
                                 onChange={inputChange}
                                 title="Password"
                                 placeholder="Enter password..."></input>
@@ -219,7 +219,7 @@ const SharedLayout = () => {
 
                                 className={sh.in} 
                                 type="text"
-                               
+                                autoComplete='false'
                                 onChange={inputChange}
                                 title="Email"
                                 placeholder="Enter email..."></input>
@@ -234,7 +234,7 @@ const SharedLayout = () => {
                             type="password"
                           
                             onChange={inputChange}
-                           
+                            autoComplete='false'
                             title="Password"
                             placeholder="Enter password..."></input>
                             </label>

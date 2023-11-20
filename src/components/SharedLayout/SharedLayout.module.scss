@@ -11,13 +11,14 @@
 
     position: fixed;
     left: 0;
+    z-index: 10;
     
     width: 100vw;
     height: 40px;
     
     padding: 10px 0;
 
-    backdrop-filter: blur(1.2px);
+    backdrop-filter: blur(2px);
     background-color: none;
     border-bottom: 1px solid rgba(139, 139, 139, 0.7);
 

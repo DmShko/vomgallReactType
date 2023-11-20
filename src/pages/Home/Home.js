@@ -1,10 +1,13 @@
 import React from 'react'
-import hm from './Home.module.scss'
+
+import HomeComp from '../../components/Home/HomeComp'
 
 const Home = () => {
   return (
-    <div className={hm.container}>
-       <p> Welcome to WOMBART</p> 
+    <div>
+
+      <HomeComp />
+       
     </div>
   )
 }

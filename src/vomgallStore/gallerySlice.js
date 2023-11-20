@@ -1,7 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const gallerySliceInitialState = {
-  items: [], 
+
+  users:[
+    {
+      name: 'Admin',
+      arts:{lirics:[],
+      music: [],
+      draw: []}
+    },
+  ], 
+
   buttonTargetName: '',
 };
 

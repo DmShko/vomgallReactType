@@ -1,8 +1,10 @@
-import React from 'react'
+import ga from './Gallery.module.scss'
 
 const Gallery = () => {
   return (
-    <div>Gallery</div>
+    <div className={ga.comtainer}>
+
+    </div>
   )
 }
 

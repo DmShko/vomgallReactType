@@ -4,21 +4,15 @@ import React from 'react'
 
 // import component pages
 import SharedLayout from './components/SharedLayout/SharedLayout'
-import Gallery from './components/Gallery/Gallery';
+import Community from './components/Community/Community';
 import NotFound from './components/NotFound/NotFound';
-import SingUp from './components/SingUp/SingUp';
-import LogIn from './components/LogIn/LogIn';
-import ModalArt from 'components/ModalArt/ModalArt';
 import Home from 'pages/Home/Home';
+import WorkSpace from 'components/WorkSpace/WorkSpace';
 
-// path consts
-const REGISTER = '/register';
-const LOGIN = '/login';
-const OIL = '/oil';
-const WATERCOLOR = '/watercolor';
-const DIGITAL = '/digital';
-const MIX = '/mix';
-const MODAL = '/modal';
+const LIRICS = '/lirics';
+const MUSIC = '/music';
+const DRAWING = '/drawing';
+const COMMUNITY = '/community';
 const NOTFOUND = '/*';
 
 const App = () => {
@@ -26,15 +20,10 @@ const App = () => {
 // Routes
 const appRoutes = [
   
-  {path: OIL, element: <Gallery />,},
-  {path: WATERCOLOR, element: <Gallery />,},
-  {path: DIGITAL, element: <Gallery />,},  
-  {path: MIX, element: <Gallery />,},
-
-  {path: MODAL, element: <ModalArt />,},
-
-  {path: REGISTER, element: <SingUp />,},
-  {path: LOGIN, element: <LogIn />,},
+  {path: LIRICS, element: <WorkSpace />,},
+  {path: MUSIC, element: <WorkSpace />,},
+  {path: DRAWING, element: <WorkSpace />,},  
+  {path: COMMUNITY, element: <Community />,}, 
   {path: NOTFOUND, element: <NotFound />,}
 ];
 

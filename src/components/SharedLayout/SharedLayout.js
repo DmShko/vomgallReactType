@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import ModalArt from 'components/ModalArt/ModalArt';
+import singUpAPI from '../../API/singUpAPI';
+import singInAPI from '../../API/singInAPI';
+import singOutAPI from '../../API/singOutAPI';
 import { change } from 'vomgallStore/gallerySlice';
+import { changeSingIn } from 'vomgallStore/singInSlice';
 
 // component import
 // import ModalArt from 'components/ModalArt/ModalArt';
@@ -18,7 +22,6 @@ const SharedLayout = () => {
 
   const [ modalToggle, setModalToggle] = useState(false);
 
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -26,7 +29,9 @@ const SharedLayout = () => {
   
   const dispatch = useDispatch();
   const selectorTargetName = useSelector(state => state.gallery.buttonTargetName);
-    
+  const selectorVisibilityLog = useSelector(state => state.singIn.isSingIn);
+  const selectorLogInUser = useSelector(state => state.singIn.email);
+
   const toggleModal = (evt) => {
     
     dispatch(change({data: evt?.target.id, operation: 'changeButtonTargetName',}));
@@ -40,9 +45,7 @@ const SharedLayout = () => {
 
     // change 'name' and 'number' without use previous value
     switch(name) {
-        case 'Name':
-            setName(value);
-            break;
+       
         case 'Email':
             setEmail(value)
             break;
@@ -58,14 +61,26 @@ const SharedLayout = () => {
     
     // change 'name','email', 'password'
     stateChange(evt.target);
+
   };
 
   const addUser = (_, evt) => {
    
-      evt.preventDefault();
+    evt.preventDefault();
+    if(selectorTargetName === 'singUp') dispatch(singUpAPI({email: email, password: password}));
+    if(selectorTargetName === 'singIn') dispatch(singInAPI({email: email, password: password}));
+    reset({email: '', password: ''});
    
-    reset({Name: '', Number: ''});
-   
+  };
+
+  const userLogOut = (evt) => {
+
+    evt.preventDefault();
+    if(evt.target.id === 'singOut') {
+        dispatch(singOutAPI());
+        dispatch(changeSingIn({data: false, operation: 'changeisSingIn'}));
+    };
+
   };
 
   return (
@@ -123,7 +138,7 @@ const SharedLayout = () => {
                         </li>
                     </ul>
 
-                    <ul className={sh.list}>
+                   {selectorVisibilityLog === false ? <ul className={sh.list}>
                         <li className={`${sh.navOneItem} ${sh.link}`}>
 
                             <p className={sh.linkNav} onClick={toggleModal} id='singUp'>SingUp</p>
@@ -131,10 +146,11 @@ const SharedLayout = () => {
                         </li>
                         <li className={`${sh.navOneItem} ${sh.link}`}>
                             
-                            <p className={sh.linkNav} onClick={toggleModal} id='logIn'>LogIn</p>
+                            <p className={sh.linkNav} onClick={toggleModal} id='singIn'>LogIn</p>
                            
                         </li>
-                    </ul>
+                    </ul> : <button className={sh.button} onClick={userLogOut} id='singOut' type='button'>{selectorLogInUser}</button>}
+
                 </nav>  
             </header>
         
@@ -164,22 +180,11 @@ const SharedLayout = () => {
                         <legend>SingUp</legend>
 
                             <div className={sh.field}>
-                            <label className={sh.lab}> Name
-                                <input {...register('Name', {required: 'Please fill the Name field!', 
-            
-                                maxLength: {value:16, message: 'Invalid length!'},  value:name, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Name!'}})} 
-                                className={sh.in} 
-                                type="text"
-                                autoComplete='false'
-                                onChange={inputChange}
-                                title="Name"
-                                placeholder="Enter name..."></input>
-                            </label>
 
                             <label className={sh.lab}> Email
                                 <input {...register('Email', {required: 'Please fill the Email field!', 
             
-                                maxLength: {value:16, message: 'Invalid length!'},  value:email, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Email!'}})} 
+                                maxLength: {value:16, message: 'Invalid length!'},  value:email, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/, message: 'Invalid Email!'}})} 
                                 className={sh.in} 
                                 type="text"
                                 autoComplete='false'
@@ -192,7 +197,7 @@ const SharedLayout = () => {
                                 <input 
                                 className={sh.in} {...register('Password', {required: 'Please fill the Password field!', 
             
-                                maxLength: {value:16, message: 'Invalid length!'},  value:password, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Password!'}})} 
+                                maxLength: {value:16, message: 'Invalid length!'},  value:password,})} 
                                 type="password"
                                 autoComplete='false'
                                 onChange={inputChange}
@@ -207,7 +212,7 @@ const SharedLayout = () => {
                     </form>
                 </div> : ''}
 
-                {selectorTargetName === 'logIn' ? <div>
+                {selectorTargetName === 'singIn' ? <div>
                     <form className={sh.fise} onSubmit={handleSubmit(addUser)}>
                         <fieldset >
                         <legend >LogIn</legend>
@@ -215,7 +220,7 @@ const SharedLayout = () => {
                             <label className={sh.lab}> Email
                                 <input {...register('Email', {required: 'Please fill the Email field!', 
             
-                                maxLength: {value:16, message: 'Invalid length!'},  value:email, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Email!'}})}
+                                maxLength: {value:16, message: 'Invalid length!'},  value:email, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/, message: 'Invalid Email!'}})}
 
                                 className={sh.in} 
                                 type="text"
@@ -228,7 +233,7 @@ const SharedLayout = () => {
                             <label className={sh.lab}> Password
                             <input {...register('Password', {required: 'Please fill the Password field!', 
             
-                            maxLength: {value:16, message: 'Invalid length!'},  value:password, pattern: {value: /\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+/, message: 'Invalid Password!'}})}
+                            maxLength: {value:16, message: 'Invalid length!'},  value:password,})}
 
                             className={sh.in}
                             type="password"

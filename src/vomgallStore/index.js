@@ -9,12 +9,15 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 
 // my reducers
 import singUpReducer from './singUpSlice';
-import logInReducer from './logInSlice';
+import singInReducer from './singInSlice';
+import singOutReducer from './singOutSlice';
 import gallerySlice from './gallerySlice';
+
 
 const rootReducer = combineReducers(
     {
-        logIn: logInReducer,
+        singIn: singInReducer,
+        singOut: singOutReducer,
         singUp: singUpReducer,
         gallery: gallerySlice,
          //...or more redusers
@@ -25,7 +28,7 @@ const persistConfig = {
     // 'key' is indeficate of one or more storage
     key: 'root',
     storage,
-    // whitelist: ['persist:root.logIn', 'persist:root.phonebook'],
+   
 };
 
 // basic reducer

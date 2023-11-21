@@ -22,7 +22,6 @@ const gallerySlice = createSlice({
     change(state, action) {
       switch(action.payload.operation){
         case 'changeButtonTargetName':
-         
           state.buttonTargetName = action.payload.data;
           break;
         default: break;

@@ -1,14 +1,14 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signOut  } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { auth } from "../firebase";
 
-const singUpAPI = createAsyncThunk(
-  'singUp/singUpAPI', 
+const logInAPI = createAsyncThunk(
+  'logIn/logInAPI', 
   
-  async function ({ email, password }) {
+  async function () {
  
-   return await createUserWithEmailAndPassword(auth, email, password)
+   return await signOut (auth)
     .then((userCredential) => {
       // Signed up 
 
@@ -18,10 +18,10 @@ const singUpAPI = createAsyncThunk(
     .catch((error) => {
       // const errorCode = error.code;
       // const errorMessage = error.message;
-      // return error.message;
+      return error.message;
       // ..
     });
 });
 
-export default singUpAPI
+export default logInAPI
 

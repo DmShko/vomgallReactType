@@ -9,6 +9,7 @@ const singUpSliceInitialState = {
   error: '',
   token: '',
   email: [],
+  usersId: [],
 };
 
 const singUpSlice = createSlice({
@@ -26,11 +27,12 @@ const singUpSlice = createSlice({
             
       builder.addCase(singUpAPI.fulfilled, (state, action) => {
 
-        // state.isLoading = false;
-        // state.token = action.payload.user.accessToken;
-        // state.email.push(action.payload.user.email);
-        // console.log(action);
-        Notiflix.Notify.success(`User '${action.payload.email}' created.`, {width: '450px', position: 'center-top', fontSize: '24px',});
+        state.isLoading = false;
+        state.token = action.payload.user.accessToken;
+        // state.email = state.email.push(action.payload.user.email);
+        // state.usersId.push(action.payload.user.uid);
+        // console.log(state.items);
+        Notiflix.Notify.success(`User '${action.payload.user.email}' created.`, {width: '450px', position: 'center-top', fontSize: '24px',});
         // some actions with 'action'...
       });
             

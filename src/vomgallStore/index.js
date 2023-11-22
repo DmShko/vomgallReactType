@@ -11,7 +11,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import singUpReducer from './singUpSlice';
 import singInReducer from './singInSlice';
 import singOutReducer from './singOutSlice';
-import gallerySlice from './gallerySlice';
+import galleryReducer from './gallerySlice';
 
 
 const rootReducer = combineReducers(
@@ -19,7 +19,7 @@ const rootReducer = combineReducers(
         singIn: singInReducer,
         singOut: singOutReducer,
         singUp: singUpReducer,
-        gallery: gallerySlice,
+        gallery: galleryReducer,
          //...or more redusers
     }
 );

@@ -1,7 +1,7 @@
-import React from 'react'
+import Community from "components/Community/Community"
 
 export const Community = () => {
   return (
-    <div>Community</div>
+    <Community />
   )
 }

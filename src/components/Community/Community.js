@@ -1,8 +1,17 @@
-import React from 'react'
+import getUserAPI from '../../API/getUserAPI'
+import Gallery from 'components/Gallery/Gallery'
+import Users from 'components/Community/Users/Users'
+
+import co from './Community.module.scss'
 
 const Community = () => {
   return (
-    <div>Community</div>
+    <div className={co.container}>
+
+      <Users />
+      <Gallery />
+
+    </div>
   )
 }
 

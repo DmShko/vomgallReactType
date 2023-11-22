@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const gallerySliceInitialState = {
+const galleryInitialState = {
 
-  users:[
+  users: [
     {
       name: 'Admin',
-      arts:{lirics:[],
-      music: [],
-      draw: []}
+      arts:{
+        lirics:{name: 'Lirics', style: []},
+        music:{name: 'Music', style: []},
+        draw: {name: 'Drawing', style: ['Oil', 'Watercolor', 'Digital', 'Mix']}
+      }
     },
   ], 
 
@@ -16,7 +18,7 @@ const gallerySliceInitialState = {
 
 const gallerySlice = createSlice({
   name: 'gallery',
-  initialState: gallerySliceInitialState,
+  initialState: galleryInitialState,
   reducers: {
 
     change(state, action) {
